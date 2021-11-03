@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  db:
+    image: postgres:12-alpine
+    volumes:
+      - database_data:/var/lib/postgressql/data
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_DB: teste_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - teste-network
+
+volumes:
+  database_data:
+    driver: local
+
+networks:
+  teste-network:
